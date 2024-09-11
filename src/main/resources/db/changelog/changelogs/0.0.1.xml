@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0.0.1" author="Deniel Konstantinov">
+        <createTable tableName="user_details">
+            <column name="user_id" type="bigserial">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_details_user_id"/>
+            </column>
+            <column name="first_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birthdate" type="date"/>
+            <column name="birthplace" type="varchar(1000)"/>
+            <column name="sex" type="varchar(10)"/>
+            <column name="current_address" type="varchar(1000)"/>
+        </createTable>
+
+        <insert tableName="user_details">
+            <column name="first_name" value="TestFirstName"/>
+            <column name="last_name" value="TestFirstName"/>
+        </insert>
+
+        <createTable tableName="required_fields">
+            <column name="required_id" type="serial">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_required_fields_required_id"/>
+            </column>
+            <column name="url" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birthdate" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birthplace" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sex" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="current_address" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <insert tableName="required_fields">
+            <column name="url" value="https://example.com/"/>
+            <column name="first_name" valueBoolean="true"/>
+            <column name="last_name" valueBoolean="true"/>
+            <column name="birthdate" valueBoolean="true"/>
+            <column name="birthplace" valueBoolean="true"/>
+            <column name="sex" valueBoolean="true"/>
+            <column name="current_address" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
